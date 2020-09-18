@@ -33,22 +33,26 @@ class Stack02:  #! using linked list
     def __init__(self):
         self.head = None
         self.tail = None
+        self.length = 0
 
     def __len__(self):
-        current = self.head
-        length = 0
-        while current:
-            length += 1
-            current = current.next
-        return length
+        # current = self.head
+        # length = 0
+        # while current:
+        #     length += 1
+        #     current = current.next
+        # return length
+        return self.length
 
     def push(self, value):
         if self.head == None:
             self.head = Node(value)
             self.tail = self.head
+            self.length += 1
             return
         self.tail.next = Node(value)
         self.tail = self.tail.next
+        self.length += 1
 
     def pop(self):
         if self.head == None:
@@ -56,6 +60,7 @@ class Stack02:  #! using linked list
         if self.head.next == None:
             data = self.head.data
             self.head = None
+            self.length -= 1
             return data
         previousNode = self.head
         while previousNode:
@@ -63,6 +68,7 @@ class Stack02:  #! using linked list
                 data = self.tail.data
                 previousNode.next = None
                 self.tail = previousNode
+                self.length -= 1
                 return data
             previousNode = previousNode.next
 
