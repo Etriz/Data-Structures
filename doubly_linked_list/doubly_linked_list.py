@@ -121,6 +121,8 @@ class DoublyLinkedList:
     """
 
     def move_to_front(self, node):
+        if self.head == node:
+            return
         prevNode = node.prev
         nextNode = node.next
         oldHead = self.head
@@ -134,7 +136,7 @@ class DoublyLinkedList:
             nextNode.prev = prevNode
         if self.tail == node:
             self.tail = prevNode
-            self.tail = None
+            self.tail.next = None
 
     """
     Removes the input node from its current spot in the 
@@ -185,6 +187,8 @@ class DoublyLinkedList:
     """
 
     def get_max(self):
+        if not self.head:
+            return None
         maxValue = 0
         currentNode = self.head
         while currentNode:
