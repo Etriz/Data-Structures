@@ -24,13 +24,13 @@ class DoublyLinkedList:
         self.length = 1 if node is not None else 0
 
     def __len__(self):
-        node = self.head
-        length = 0
-        while node:
-            length += 1
-            node = node.next
-        return length
-        # return self.length
+        # node = self.head
+        # length = 0
+        # while node:
+        #     length += 1
+        #     node = node.next
+        # return length
+        return self.length
 
     """
     Wraps the given value in a ListNode and inserts it 
@@ -170,9 +170,10 @@ class DoublyLinkedList:
         if self.head == node and self.tail == node:
             self.head = None
             self.tail = None
-        elif self.head == node:
+            self.length -= 1
+        elif self.head is node:
             self.remove_from_head()
-        elif self.tail == node:
+        elif self.tail is node:
             self.remove_from_tail()
         else:
             prevNode = node.prev
